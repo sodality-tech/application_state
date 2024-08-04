@@ -17,7 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isForeground = false;
-  final _applicationStatePlugin = ApplicationState();
 
   @override
   void initState() {
@@ -31,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      isForeground = await _applicationStatePlugin.getAppIsForeground();
+      isForeground = await ApplicationState.getAppIsForeground();
     } on PlatformException {
       isForeground = false;
     }
