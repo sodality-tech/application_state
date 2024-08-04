@@ -66,3 +66,8 @@ android {
         }
     }
 }
+
+dependencies {
+    implementation 'androidx.lifecycle:lifecycle-process:2.8.4'
+    implementation 'androidx.lifecycle:lifecycle-common-jvm:2.8.4'
+}
