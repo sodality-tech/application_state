@@ -17,6 +17,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool _isForeground = false;
+  final _applicationStatePlugin = ApplicationState();
 
   @override
   void initState() {
@@ -30,10 +31,14 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      isForeground = await ApplicationState.getAppIsForeground();
+      isForeground = await _applicationStatePlugin.getAppIsForeground();
     } on PlatformException {
       isForeground = false;
     }
+
+    _applicationStatePlugin.appIsForegroundStream().listen((data) {
+      print(data);
+    });
 
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling

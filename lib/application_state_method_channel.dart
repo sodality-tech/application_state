@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
@@ -9,10 +11,19 @@ class MethodChannelApplicationState extends ApplicationStatePlatform {
   @visibleForTesting
   final methodChannel = const MethodChannel('application_state');
 
+  final eventChannel = const EventChannel('application_state_events');
+
   @override
   Future<bool> getAppIsForeground() async {
     final isForeground =
         await methodChannel.invokeMethod<bool>('getAppIsForeground');
     return isForeground ?? true;
+  }
+
+  @override
+  Stream<bool> appIsForegroundStream() {
+    return eventChannel.receiveBroadcastStream().map((dynamic event) {
+      return event as bool;
+    });
   }
 }

@@ -26,4 +26,9 @@ abstract class ApplicationStatePlatform extends PlatformInterface {
   Future<bool> getAppIsForeground() {
     throw UnimplementedError('getAppIsForeground() has not been implemented.');
   }
+
+  Stream<bool> appIsForegroundStream() {
+    throw UnimplementedError(
+        'appIsForegroundStream() has not been implemented');
+  }
 }
