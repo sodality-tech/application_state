@@ -1,11 +1,14 @@
 name: UIKit
 description: Bindings for UIApplication
 language: objc
-output: generated/generated_bindings.dart
+output: lib/generated/generated_bindings.dart
 exclude-all-by-default: true
 objc-interfaces:
   include:
     - 'UIApplication'
+objc-protocols:
+  include:
+    - 'UIApplicationDelegate'
 headers:
   entry-points:
     - '/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/iOSSupport/System/Library/Frameworks/UIKit.framework/Headers/UIApplication.h'

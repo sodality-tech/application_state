@@ -55,8 +55,13 @@ class _MyAppState extends State<MyApp> {
       isForeground = false;
     }
 
-    _applicationStatePlugin.appIsForegroundStream().listen((data) {
-      print(data);
+    // _applicationStatePlugin.appIsForegroundStream().listen((data) {
+    //   print(data);
+    // });
+
+    _applicationStatePlugin.applicationStateStream((isForeground) {
+      print('invoked');
+      print('[FFI] $isForeground');
     });
 
     // If the widget was removed from the tree while the asynchronous platform
