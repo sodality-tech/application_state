@@ -1,21 +1,25 @@
 name: application_state
 description: "A new Flutter plugin project."
 version: 0.0.1
-homepage:
+publish_to: none
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
   flutter: '>=3.3.0'
 
 dependencies:
+  ffi: ^2.1.2
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
+  objective_c: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+  ffigen: ^13.0.0
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

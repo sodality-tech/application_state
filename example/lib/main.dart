@@ -5,7 +5,26 @@ import 'package:flutter/services.dart';
 import 'package:application_state/application_state.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  invokeApplicationStateCalls();
   runApp(const MyApp());
+}
+
+Future<void> invokeApplicationStateCalls() async {
+  final applicationStatePlugin = ApplicationState();
+  final Stopwatch stopwatch = Stopwatch()..start();
+  for (int i = 0; i < 1000; i++) {
+    await applicationStatePlugin.getAppIsForeground();
+  }
+  stopwatch.stop();
+  print('[PlatformMethod] 1000 calls in ${stopwatch.elapsedMilliseconds}');
+  stopwatch.reset();
+  stopwatch.start();
+  for (int i = 0; i < 1000; i++) {
+    applicationStatePlugin.syncAppIsForeground();
+  }
+  stopwatch.stop();
+  print('[FFI] 1000 calls in ${stopwatch.elapsedMilliseconds}');
 }
 
 class MyApp extends StatefulWidget {
